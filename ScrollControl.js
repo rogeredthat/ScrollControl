@@ -1,14 +1,15 @@
-var ScrollTarget=0,ScrollCurrent=0;
+var doc_ScrollTarget=0,doc_ScrollCurrent=0;
 var FPS=1000;
 var step=2;
 var friction=0.5;
 var speed=10;
 document.addEventListener("mousewheel",function(e){
-    console.log(ScrollCurrent);
-    ScrollTarget+=(e.wheelDelta*step);
+    if(doc_ScrollTarget)
+    doc_ScrollTarget+=(e.wheelDelta*step);
 },false);
 
 window.setInterval(function(){
-    ScrollCurrent+=(ScrollTarget-ScrollCurrent)*(Math.pow(friction,2)/speed);
-    document.body.style.top=ScrollCurrent;
+    doc_ScrollCurrent+=(doc_ScrollTarget-doc_ScrollCurrent)*(Math.pow(friction,2)/speed);
+    document.body.style.top=doc_ScrollCurrent;
 },1000/FPS);
+
