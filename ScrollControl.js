@@ -28,12 +28,21 @@ window.setInterval(function(){
         for(x in n.props)
             {
                 m=(n.props[x][1]-n.props[x][0])/(n.bounds[1]-n.bounds[0]);
-                n.DOM.style[x]=-m*doc_ScrollCurrent+n.props[x][0];
+                if(-doc_ScrollCurrent>n.bounds[0]){
+                    n.DOM.style[x]=-m*doc_ScrollCurrent+n.props[x][0];
+                }
+                else
+                    n.DOM.style[x]=n.props[x][0];
+                if(-doc_ScrollCurrent<n.bounds[1]){
+                    n.DOM.style[x]=-m*doc_ScrollCurrent+n.props[x][0];
+                }
+                else
+                    n.DOM.style[x]=n.props[x][1];
             }
     }
 },1000/FPS);
 
-element=0;
+element=null;
 
 //Global Variable for Elements linked to Scroll
 ScrollControlled=[];
