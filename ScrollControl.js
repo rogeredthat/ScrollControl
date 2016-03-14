@@ -47,7 +47,7 @@ element=null;
 //Global Variable for Elements linked to Scroll
 ScrollControlled=[];
 
-function find(selector)
+function getDOM(selector)
 {
     elements=document.querySelectorAll(selector)
     return this;
